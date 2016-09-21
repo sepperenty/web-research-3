@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	
+	<script src="js/vue.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<div id="app">
+
+			<counter subject="likes"></counter>
+
+			<counter subject="dislikes"></counter>
+			<!-- <button type="submit" @click="updateCount" style="width:50%; float:left">
+				
+					likes: {{count}}
+			
+			</button>
+			
+			<button type="submit" @click="updateCount" style="width:50%; float:left">
+				
+					dislikes: {{count}}
+			
+			</button>
+			 -->
+
+			 <template id="counter-template">
+			 	<h1>{{subject}}</h1>
+			 	<button @click="count+=1">{{count}}</button>
+			 </template>
+	
+
+	</div>
+	
+
+
+	<script src="js/script.js"></script>
+
+</body>
+
+	
+
+</html>

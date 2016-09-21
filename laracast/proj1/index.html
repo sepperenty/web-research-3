@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	
+	<script src="js/vue.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<div id="app">
+
+		<form>
+			<span class="error" v-show="!message">
+				You must enter a message
+			</span><br>
+
+			<textarea v-model="message" cols="30" rows="10"></textarea><br>
+
+			<button type="submit" v-show="message">send message</button>
+		</form>
+
+
+
+		<!-- <pre>
+			{{$data|json}}
+		</pre> -->
+	</div>
+	
+
+
+	<script src="js/script.js"></script>
+
+</body>
+
+	
+
+</html>
