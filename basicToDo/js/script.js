@@ -4,6 +4,7 @@ var exampleData = {
 	title: 'hello world',
 	newTodo: '',
 	todos: [],
+	id : 'inspect me',
 }
 
 var exampleVM = new Vue({

@@ -7,16 +7,12 @@
 </head>
 <body>
 
-	<div id="example1">
-			
-			<h1>{{title}}</h1>
+	<div id="todo">
 
-			<input v-model="newTodo" v-on:keyup.enter="addTodo">
+		<input v-model="newTodo" v-on:keyup.enter="addTodo">
 
-			<li v-for="todo in todos">
-				<span>{{todo.text}}</span>
-				<button v-on:click="removeTodo($index)">X</button>
-			</li>
+		<todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>	
+		
 
 	</div>
 	
