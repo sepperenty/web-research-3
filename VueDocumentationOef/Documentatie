@@ -1,0 +1,9 @@
+vm.a === data.a -> true
+vm.a = 3 -> data.a === 3 -> true + vice versa
+
+$watch -> Executes function when 'watched' variable is changed
+
+lifecycle hooks -> Vue instances goes through a series of initializations + it will invoke some lifecycle hooks wich you can give custom logic
+F.E : the created, mounted, updated, and destroyed.
+
+TEMPLATE SYNTAX
