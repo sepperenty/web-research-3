@@ -1,9 +1,118 @@
+
+Start een Vue instance zo :
+
+var vm = new Vue({
+  // options
+})
+
+Je can ook componenten aanmaken:
+
+var MyComponent = Vue.extend({
+  // extension options
+})
+
+Deze componenten kan je initializeren op deze manier :
+
+var myComponentInstance = new MyComponent()
+
+Er dubbele data binding -> Als je 1 van de 2 aanpast past de andere zich sowieso ook aan.
+
 vm.a === data.a -> true
 vm.a = 3 -> data.a === 3 -> true + vice versa
 
-$watch -> Executes function when 'watched' variable is changed
+$watch -> Met deze functie kan je een variabele "watchen", als deze veranderd kan je een functie oproepen.
 
-lifecycle hooks -> Vue instances goes through a series of initializations + it will invoke some lifecycle hooks wich you can give custom logic
-F.E : the created, mounted, updated, and destroyed.
+
+lifecycle hooks -> De vue instance gaat door een hele boel initializeringen + Er zullen lifecycle hooks worden uitgevoerd die je zelf kan aanpassen met logica
+bv : created, mounted, updated, and destroyed.
 
 TEMPLATE SYNTAX
+
+{{variable}} -> Dubbele moustache zal data tonen die de variabele bevat in de vue instance -> Als het de wijzigenen van de variabele niet mag tonen = v-once
+
+Attributen worden gebruikt met v-bind, niet met de dubbele moustache -> v-bind:id='customid'
+
+Je kan ook basis javascript expressies gebruiken in de html bv : {{number + 1}} & {{oke ? 'yes' : 'no'}}
+Er zijn ook filters, die worden aangetoont met | bv : {{message | capitalize}} -> Je kan meerdere filters gebruiken bij 1 variabele + het moet altijd binnen {{}}
+
+DIRECTIVES
+
+Speciale attributen met V- ervoor. bv: v-if -> Sommige van deze directives nemen argumenten aan
+
+Modfigiers: Deze worden aangetoont met een punt bv: .prevent -> event.preventdefault(). <form v-on:submit.prevent='onSubmit'></form> -> de default wordt niet uitgevoerd maar de submit functie wel.
+
+Kleine short hands (deze zal je veel gebruiken dus het wordt afgekort):
+
+v-bind:href="url" == :href="url"
+
+v-on:click="function" == @click="function"
+
+COMPUTED PROPERTIES
+
+Zo weinig mogelijk logica in de html steken. Anders word de tamplate te onduidelijk bv:
+
+<h1>{{ variable ? 'titel1' : 'titel2 '}}</h1>
+
+Vervangen door:
+
+<h1 id="example"> {{ returnTitle }} </h1>
+
+var vm = new Vue({
+  el: '#example',
+  data: {
+    variable: true
+  },
+  computed: {
+    returnTitle: function () {
+     	if(this.variable)
+     	{
+     	 return 'titel1';
+     	}
+     	else
+     	{
+     	return 'titel2'
+     	}
+    }
+  }
+})
+
+Hier hebben we gebruik gemaakt van een computed propertie. De functie returnTitle() zal gebruikt worden als Getter functie om
+de juiste titel te returnen. Als variable veranderd zal de returnTitle terug worden opgeroepen en zal de Titel dus ook veranderen.
+
+Computed vs methods:
+
+Als je het bovenste met een methode had gedaan zal je hetzelfde resultaat krijgen maar er is een verschil:
+
+Een computed propertie wordt opgeroepen als een variabele waar hij afhankelijk van is (een dependencie) wordt gewijzigt.
+Als deze niet wordt gewijzigt zal het gewoon de oude waarde returnen die hij heeft gecached -> de functie moet niet worden herhaald.
+Als we het met een methode doen zal de functie steeds worden herhaald bij een rerender.
+
+Computed vs Watched properties:
+
+Een watch methode is vaak repeteties en onduidelijk, tegenover een computed propertie.
+
+De computed getter hebben we nu gezien maar er zijn ook computed setters vb:
+
+	computed:{
+
+		title:{
+
+			get: function()
+			{
+			return title;
+			},
+
+			set: function(newVal)
+			{
+			this.title = newVal;
+			}
+		}
+
+
+	}
+
+->vm.title = "niewe titel" = setter
+->vm.title = getter
+
+Als het programma iets ingewikkelder is en er moeten methodes worden opgeroepen wanneer er data veranderd is de Watch methode wel aangeraden.
+Maar voor de rest moet een computed propertie normaal volstaan.

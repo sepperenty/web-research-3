@@ -22,9 +22,5 @@ vm.$watch('a', function(newVal, oldVal){
 	console.log('a is changed from ' + oldVal + ' to ' + newVal);
 })
 
-//lifecycle hooks -> Vue instances goes through a series of initializations + it will invoke some lifecycle hooks wich you can give custom logic
-//F.E : the created, mounted, updated, and destroyed.
 
-
-//TEMPLATE SYNTAX
 
