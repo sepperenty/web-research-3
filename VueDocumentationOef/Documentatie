@@ -116,3 +116,106 @@ De computed getter hebben we nu gezien maar er zijn ook computed setters vb:
 
 Als het programma iets ingewikkelder is en er moeten methodes worden opgeroepen wanneer er data veranderd is de Watch methode wel aangeraden.
 Maar voor de rest moet een computed propertie normaal volstaan.
+
+CLASS + STYLE bindings
+
+Classes en id's zijn attributen -> v-bind bv: <h1 v-bind:id="id"></h1>
+
+We kunnen ook dynamisch klassen toggelen -> v:bind:class="{ active: isActive, text-danger : hasError }"
+
+Het klasse object moet niet inline zijn -> v:bind:class="classObject"
+ 
+We kunnen ook een array van klassen meegeven v-bind:class='[klasse1, klasse2]'
+
+Je kan ook style binden met vue -> v-bind:style="{ color: blue}";
+
+CONDITIONAL RENDERING
+
+vb:
+
+<p v-if = "ok">Yes</p>
+<p v-else > No</p>
+
+Dit is voor 1 element. Voor meerdere elementen moet de v-if aan een template worden gekoppelt
+
+<template v-if='ok'>
+		
+		html elements
+
+</template>
+
+v-else moet direct na v-if komen anders werkt het niet
+
+Je kan ook werken met v-show maar er is een verschil:
+
+v-show wordt sowieso gerenderd in de DOM maar toggled gewoon de display functie van css, met v-if wordt het element conditioneel
+in de DOM geladen
+
+Wat is het beste om te gebruiken ?
+
+v-show is trage bij het rederen van de pagina maar sneller bij het toggelen.
+v-if is sneller bij het renderen van de pagina maar trager bij het toggelen.
+
+LIST RENDERING
+
+for lus = v-for='item in items'
+items is de variabele, item is de alias
+
+v-for="(item, index) in items" -> index stelt de index voor van de item in de items
+
+V-for kan ook door een object -> v-for="value in object"
+een extra argument kan ook -> v-for="(key, value) in object" & zelfs v-for="(key, value, index) in object"
+
+key
+
+Het is aangeraden een key mee te geven aan aan je list -> v-for='item in itmes' :key="item.id"
+Dit is aangeraden als er nog child components komen of een tijdelijke DOM status.
+
+Array manipulation
+
+push()
+pop()
+shift()
+unshift()
+splice()
+sort()
+reverse()
+
+Bij deze methode wordt de array gwijzigt
+
+functies zoals filter() concat() en slice() zijn functies waarbij er een nieuwe array word aangemaakt en de 
+orginele array dus niet wordt aangepast. Dit is redelijk logisch
+
+Caveats. Er zijn 2 zaken die niet herkent worden door vue maar wel logisch lijken
+1 : vm.items[index] = newVulue;
+
+Oplossing ->  vm.set(example1.items, index, newValue);
+of        ->  example1.items.splice(index,1,newValue);
+
+2 : vm.items.length = newLength;
+
+Oplossing -> example1.items.splice(newLength);
+
+Array fileren
+
+Je kan ook een array filteren de beste manier om dit te doen is met een computed propertie of met een methode.
+
+dan doe je v-for="n in evennumbers" of v-for="n in evenize(numbers)"
+
+methods:{
+    evenize:function(list){
+      return list.filter(function(number){
+        return number % 2 ===0;
+      })
+    },
+  },
+
+  computed:{
+    evenNumbers:function()
+    {
+      return this.numbers.filter(function(number){
+        return number % 2 === 0;
+      })
+    }
+  }
+

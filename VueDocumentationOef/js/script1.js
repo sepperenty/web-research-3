@@ -1,12 +1,32 @@
 console.log("ingeladen");
 
-var data = {a:1};
+var data = {a:1,
+
+			numbers:[1,2,3,4,5,6,7,8,9,10]
+
+			};
 
 var vm = new Vue({
 	el:"#example",
 	data:data,
 	created: function(){
 		console.log("a = " + this.a);
+	},
+	methods:{
+		evenize:function(list){
+			return list.filter(function(number){
+				return number % 2 ===0;
+			})
+		},
+	},
+
+	computed:{
+		evenNumbers:function()
+		{
+			return this.numbers.filter(function(number){
+				return number % 2 === 0;
+			})
+		}
 	}
 });
 
