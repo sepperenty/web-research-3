@@ -6,6 +6,23 @@ var data = {a:1,
 
 			};
 
+var countData = {counter: 0}
+
+
+
+Vue.component('my-component',{
+	template:"<button v-on:click='counter+=1'>{{counter}}</button>",
+	data: function(){
+		return {counter : 0}
+		//return countData
+	}
+
+});
+
+
+
+
+
 var vm = new Vue({
 	el:"#example",
 	data:data,
@@ -30,6 +47,8 @@ var vm = new Vue({
 	}
 });
 
+
+
 //vm.a === data.a -> true
 //vm.a = 3 -> data.a === 3 -> true + vice versa
 
@@ -42,5 +61,6 @@ vm.$watch('a', function(newVal, oldVal){
 	console.log('a is changed from ' + oldVal + ' to ' + newVal);
 })
 
+//////////////////////:componenten////////////////////////////////
 
 

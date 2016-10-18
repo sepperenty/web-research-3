@@ -219,3 +219,298 @@ methods:{
     }
   }
 
+EVENT HANDLING
+
+Beglangrijk = v-on
+
+Dit kan zowel een expressie : <button v-on:click='counter+=1'> counter </button>
+als een methode oproepen : <button v-on:click="function"> </button>
+
+Soms willen we een info van de DOM opvragen bij een functie, dit kan je doen met de $event variabele
+-> v-on:click="function, $event" -> function(even){event.preventDefault()};
+
+Event modifiers
+
+Het is beter om de preventdefault in de html te zetten en de js op pure logica te houden
+Vue heeft een aantal event modifiers om dit te doen, ze worden aangetoont met een punt.
+
+.stop
+.prevent
+.capture
+.self
+
+<form v-on:submit.prevent="onSubmit"></form> De reload zal hierdoor niet gebeuren.
+
+Er zijn ook key modifiers vn v-on:keyup.13="submit" voor de meeste keycodes heeft vue een alias
+ .enter bijvoorbeeld
+
+enter
+tab
+delete (captures both “Delete” and “Backspace” keys)
+esc
+space
+up
+down
+left
+right
+
+FORM INPUT BINDINGS
+
+v-model kiest zelf de juiste manier om de data te updaten gebaseert op het input type.
+
+-multiline text
+  met een textarea kun je meerdere lijnen text maken.
+
+Je kan zelfs meerdere checkboxen binden aan dezelfde array ->
+De array wordt dan gevult met de data van de checkbox. 
+
+Hetzelfde gaat met radiobuttons en met select
+
+Select kan ook gerenderd worden met een v-for
+  
+  <select v-model="selected">
+
+    <option v-for="option in options" v:bind:value="option.value">
+      {{option.text}}
+    </option>
+
+
+  </select>
+
+  data: {
+    selected: 'A',
+    options: [
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ]
+  }
+
+De radio, select en checkbox values hangen meestal vast aan een constante string vb <input type="checkbox" v-model="selected" value="test">
+
+Maar soms willen we ze vast hangen aan een dynamische value-> dan werken we met v-bind:value="variable"
+
+Modifiers
+
+Om te syncen na een change event ipv een input event kan je .lazy gebruiken -> v-model.lazy="var"
+
+Als je de inputdata direct wil typecasten naar een number kan je .number gebruiken
+
+Als je de data meteen wilt trimmen kan je .trim gebruiken.
+
+COMPONENTEN
+
+Met componenten kan je logica en html kan hergebruiken.
+
+Hoe gebruiken:
+  registreren
+
+  Vue.component('mijn-component', {
+
+  })
+
+  Nu kan deze component gebruikt worden als html object ->  <mijn-component></mijn-component>
+
+  Bovenstaande component is globaal gedeclareerd maar dit kan ook lokaal
+
+  new Vue({
+    ...
+    components:{
+      'mijn-component': {
+        template: '<p>test</p>'
+      }
+    }
+  })
+
+  Uitzonderingen
+
+In sommige html tags kunnen geen custom components komen, dit heeft te maken met de rendering van de DOM
+een paar van die tags zijn :table, select, ul, ol, option
+
+Een workaround is dit :
+
+ipv:  <table>
+        <my-row></my-row>
+      </table>
+
+dit:  <table>
+        <tr is="my-row"></tr>
+      </table>
+
+-Data moet een functie zijn bij componenten
+  dus ipv 
+    Vue.component('my-component', {
+
+      template: '<span>{{ message }}</span>',
+
+      data: {
+        message: 'hello'
+      }
+    })
+
+  dit: 
+
+
+    Vue.component('my-component', {
+      template: '<span>{{ message }}</span>',
+     
+      data: function () {
+        return 'hello'
+      }
+    })
+
+
+-We kunnen componenten in elkaar gebruiken. Vue is ook gemaakt om dit te doen.
+Om een goede communicatie te hebben tussen 2 componenten parent -> child en toch de componenten zo gescheide mogelijk te houden heeft
+Vue wat methodes.
+ Communicatie van parent naar child is via Props
+ Communicatie van child naar parent is via Events
+
+ Props:
+
+  Vue.component("child", {
+    props: ["message"],
+    template: "<p>{{message}}</p>"
+  })
+
+  <child message = "my message"></child>
+
+  Je kan ook dynamische props gebruiken
+
+  <input v-model="parentMessage"></input>
+
+  <child v-bind:message="parendMessage"></child>
+
+  Als we een nummer willen doorgeven moeten we ook met Bind werken anders wordt de nummer doorgegeven als een string
+
+  Props gaan maar 1 weg. Als de parent data veranderd veranderd de child data vanzelf ook en wordt het gerefresht
+  maar probeer in de child de prop value niet te wijzigen.
+
+  Als die wel moet kan je een locale data propertie aanmaken en die data gelijk zetten aan de value van de propertie of een computed propertie aanmaken
+  en die gelijk zetten aan de value van de propertie.
+
+  Je kan props ook validatie meegeven. Zodat er een warning komt als validatie niet klopt
+  De props wordt dan een object ipv een array
+    props:{
+        propA: Number,
+        propB: [String, Number],
+        propC: {
+        type: Object,
+        default: function () {
+          return { message: 'hello' }
+        }
+    }
+
+  Custom events:
+
+  Om data van de child terug te brengen naar de parent.
+  Met de $emit('emitName') kan je info terug brengen naar de parent
+
+  de nu kan je bij de parente v-on:emitName="function" toevoegen
+  De parent zal dus reageren als het child iets emit
+
+  Form input componenten met custom events zijn wat ingewikkelder
+
+  bij v-model="var" hangt de var vanzelf samen met de var in het script en is er 2 way binding
+
+  het is hetzelfde als  v-bind:value="var" v-on:input="var = $event.target.value"
+
+  Dus als we v-model willen gebruiken bij een custom component zullen we een value propertie moeten hebben en een
+  input event met de input value
+
+   dus -> this.$emit('input', event.target.value) bij elke input -> v-on:input
+    en -> props : [value] met -> v-bind:value="value"
+
+-not parend child communication
+
+hiervoor kan je een nieuwe lege vue instance aanmaken
+
+var bus = new Vue();
+
+in component A
+  
+  bus.$emit("idselected", 2);
+
+in component B
+  
+  bus.$on("idselected", function(id){
+
+  })
+
+-Scope
+  Alles in de parent template is van de parent scope, alles in de child template is in de child scope
+  deze fout wordt veel gemaakt:
+
+  <child-component v-show="someChildProperty"></child-component>
+
+  De someChildProperty staat in de parent template dus zal niet herkent worden.
+
+-Single slot
+  
+  <slot> geeft de waarde weer dat de parent tussen de tags heeft gezet. Hiervoor kan je plaats maken in de component template
+    als je dit niet doet worde de parent data verwijderd.
+
+-names slots
+
+  je kan je slot ook een naam geven
+    <slot name="header">fallbeck header content</slot>
+
+  de parent kan dit dan accesen met
+    <h1 slot="header"> parent header </h1>
+
+- dynamic components
+
+  In de parent kan je met 1 mount point gebruik maken van verschillende components
+
+  <component v-bind:is="component name";
+
+  Als je er wil voor zorgen dat de state wordt onthouden van voorgaande componenten na een switch
+  kan je dit doen door de dynamic component te wrappen in een <keep-alive> tag
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
