@@ -15,6 +15,7 @@ Vue.component('my-component',{
 	data: function(){
 		return {counter : 0}
 		//return countData
+		
 	}
 
 });

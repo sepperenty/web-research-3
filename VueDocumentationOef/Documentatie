@@ -15,7 +15,7 @@ Deze componenten kan je initializeren op deze manier :
 
 var myComponentInstance = new MyComponent()
 
-Er dubbele data binding -> Als je 1 van de 2 aanpast past de andere zich sowieso ook aan.
+Er two-way data binding -> Als je 1 van de 2 aanpast past de andere zich sowieso ook aan.
 
 vm.a === data.a -> true
 vm.a = 3 -> data.a === 3 -> true + vice versa
