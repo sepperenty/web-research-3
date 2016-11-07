@@ -66,3 +66,21 @@ var vm = new Vue({
 })
 
 
+
+vm.$watch('kop', function (newVal, oldVal) {
+ 	//dit wordt uitgevoegd bij een wijziging van de kop variabele
+})
+
+
+
+
+var vm = new Vue({
+  data: {
+   kop: "tekst"
+  },
+  created: function () {
+    
+    console.log(this.kop);
+  }
+})
+
