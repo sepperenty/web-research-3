@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computedpropertie example</title>
+	<script src="../vue.js"></script>
+
+</head>
+<body>
+
+<h1>Computed properties voorbeeld</h1>
+
+			<div id="app">
+
+			<h4>javascript expression</h4>
+
+					<form>
+						
+						<input type="text" v-model="factor1">
+					
+						<input type="text" v-model="factor2">
+
+					</form>
+
+					<p>{{ factor1 * factor2 }}</p>
+
+
+
+			</div>
+
+			<div id="computed">
+
+			<h4>Computed propertie</h4>
+				
+				<form>
+					
+					<input type="text" v-model="factor1">
+
+					<input type="text" v-model="factor2">
+
+				</form>		
+				
+				<p>{{ vermedigvuldiging }}</p>
+
+			<button v-on:click= "vermenigvuldig()">test</button>
+
+
+		
+			</div>
+
+
+			<div id="bindExample">
+					
+					<form>
+	
+						<label v-for="option in options">
+
+						 <input  type="checkbox" v-model="selected" v-bind:value="option.value" name="options" >{{option.text}}
+								
+						</label>
+				    
+				    </form>
+				   
+
+				  
+				   
+
+		
+
+			    <ul v-for="select in selected">
+
+			    	<li>{{select}}</li>
+			    	
+			    </ul>
+	
+			</div>
+
+
+		<script src="base.js"></script>
+</body>
+</html>

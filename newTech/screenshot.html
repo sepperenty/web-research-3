@@ -61,3 +61,46 @@
 
 
 <span v-bind:id='customid'> </span>
+
+
+{{ message | capitalize }}
+
+
+{{  number + 1 }}
+
+
+{{ (var) ? "true" : "false" }}
+
+
+<span v-class="
+  red    : hasError,
+  bold   : isImportant,
+  hidden : isHidden">
+ </span>
+
+
+
+<button v-on:click.prevent ></button>
+
+
+<li v-for="n in even(numbers)">{{ n }}</li>
+
+
+<button v-on:click='counter+=1'> count </button>
+
+<button v-on:click="count()"> count </button>
+
+
+
+
+
+
+
+<button v-on:click="count(), $event"> count </button>
+
+<input type="text" v-on:keyup.13="submit" >
+
+
+
+ -> function(even){event.preventDefault()};
+
