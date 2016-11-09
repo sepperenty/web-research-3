@@ -120,8 +120,9 @@ Vue.component('extern-component', {
 	created: function () {
    
 		brug.$on('color-change', function (newColor) {
-		 	this.backstyle = "background-color : " + newColor;
+
 		 	console.log(this.backstyle);
+		 	
 		})
    
   	}
