@@ -91,6 +91,10 @@ Vue.component('reverse-input', {
 });
 
 
+var brug = new Vue()
+
+
+
 Vue.component('color-input-field', {
 	template: '<div><input type="text" name="color" v-model="color"></div>',
 	data : function(){
@@ -99,9 +103,28 @@ Vue.component('color-input-field', {
 	watch: {
 	    color: function (val) {
 	      this.$emit('color-change', this.color);
+
+	      brug.$emit('color-change', this.color);
+
 	    },
 	}
 
+});
+
+
+Vue.component('extern-component', {
+	template:'<div><p v-bind:style="backstyle">{{backstyle}}</p></div>',
+	data: function(){
+		return {backstyle : "background-color : green"}
+	},
+	created: function () {
+   
+		brug.$on('color-change', function (newColor) {
+		 	this.backstyle = "background-color : " + newColor;
+		 	console.log(this.backstyle);
+		})
+   
+  	}
 });
 
 
@@ -114,9 +137,12 @@ Vue.component('parent', {
 		changeColor:function(color){
 			this.color = "background-color :" + color;
 		},
-	},
+	}
+	
 
 })
+
+
 
 
 
