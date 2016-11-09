@@ -298,7 +298,8 @@ Als je de inputdata direct wil typecasten naar een number kan je .number gebruik
 
 Als je de data meteen wilt trimmen kan je .trim gebruiken.
 
-COMPONENTEN
+
+
 
 Met componenten kan je logica en html kan hergebruiken.
 

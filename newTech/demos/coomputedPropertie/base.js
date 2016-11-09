@@ -69,3 +69,60 @@ var bindExample = new Vue ({
 
 
 
+
+
+
+Vue.component('reverse-input', {
+		 props: ['name'],
+		template: '<div> <input type=text v-model = "message"> </div> <p> {{reverseMessage}} : {{name}}</p>',
+	  	data : function(){
+	  	return {
+	  		message : "reverse this input",
+	  		}
+  		},
+  		computed: {
+  			reverseMessage : function(){
+  				console.log(this.name);
+  				return this.message.split('').reverse().join('');
+  			}
+  		},
+
+
+});
+
+
+Vue.component('color-input-field', {
+	template: '<div><input type="text" name="color" v-model="color"></div>',
+	data : function(){
+		return { color: "" }
+	}, 
+	watch: {
+	    color: function (val) {
+	      this.$emit('color-change', this.color);
+	    },
+	}
+
+});
+
+
+Vue.component('parent', {
+	template: '<div  v-bind:style="color"> <color-input-field v-on:color-change="changeColor"> </color-input-field> </div>',
+	data : function(){
+		return { color: "background-color : blue" }
+	}, 
+	methods: {
+		changeColor:function(color){
+			this.color = "background-color :" + color;
+		},
+	},
+
+})
+
+
+
+
+new Vue({
+	el:'#componentExample',
+ 	
+})
+
