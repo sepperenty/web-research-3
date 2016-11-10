@@ -8,7 +8,7 @@ console.log("angularbase ingeladen");
 
 	angular.module('angularTest', [])
 		.controller('cardsController', ['$scope', function($scope) {
-		 	 $scope.currentId = "5";
+		 	 $scope.currentId = "";
 		}])
 
 		.directive('myCustomer',["$http", function($http) {
@@ -35,9 +35,6 @@ console.log("angularbase ingeladen");
 
 		    	this.updateCards();
 		    	
-
-
-
 		    }, controllerAs: "cardsCtrl"
 
 		  };
@@ -67,6 +64,28 @@ console.log("angularbase ingeladen");
 		    	});
 		    	
 		    }, controllerAs: "cardInfoCtrl"
+			  };
+		}])
+
+		.directive('cardUpdate',["$http", function($http) {
+		  return {
+			    templateUrl: "/templates/updateForm.html",
+			    controller: function($scope){
+		    	var vm = this;
+		    	vm.card = {};
+		    	vm.title = "";
+		    	vm.body="";
+
+		    	vm.updateCard = function(){
+		    		var token = $('#token').val();
+					console.log(token);
+					$.post( "/api/cards/"+$scope.currentId+"/update", { title: vm.title, body: vm.body, '_token': token  } );
+					$scope.cardsCtrl.updateCards();
+					$scope.cardInfoCtrl.updateCard();
+		    	};
+
+		    			    		    	
+		    }, controllerAs: "cardUpdateCtrl"
 			  };
 		}]);
 

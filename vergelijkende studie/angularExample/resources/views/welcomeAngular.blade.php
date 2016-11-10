@@ -21,6 +21,9 @@
 	  <div my-customer></div>
 
 	  <div card-info></div>
+		
+		<input type="hidden" id="token" value="{{ csrf_token() }}">
+	  <div card-update></div>
 
 	</div>
 		

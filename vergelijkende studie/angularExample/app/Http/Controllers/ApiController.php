@@ -20,7 +20,7 @@ class ApiController extends Controller
 
    	public function update(Card $card, Request $request)
    	{
-   		$oldCard = $card;
+        	$oldCard = $card;
    		$oldCard->update([
    				'title' => $request->title,
    				'body' => $request->body,
