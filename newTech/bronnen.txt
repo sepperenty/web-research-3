@@ -1,1 +1,14 @@
+
 http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/
+
+https://www.quora.com/How-popular-is-VueJS-in-the-industry
+
+https://medium.com/the-vue-point/the-state-of-vue-1655e10a340a#.qxpbw0s3o
+
+
+https://www.airpair.com/js/javascript-framework-comparison
+
+
+comparisons
+
+https://fadeit.dk/blog/2015/05/14/getting-started-with-vuejs-angularjs-perspective/

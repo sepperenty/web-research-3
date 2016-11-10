@@ -1,0 +1,11 @@
+
+	<div class="col-md-6">
+
+		<h1>Cards with angular</h1>
+		
+		<ul ng-repeat="card in cardsCtrl.cards" class="list-group">
+			<li class="list-group-item" ng-click="cardsCtrl.changeId(card.id)">{{card.title}}</li>
+		</ul>
+	
+
+	</div>
