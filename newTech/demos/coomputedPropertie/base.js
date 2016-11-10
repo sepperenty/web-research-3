@@ -148,8 +148,13 @@ Vue.component('parent', {
 
 
 
+
+
 new Vue({
 	el:'#componentExample',
+	data:{
+		inputModel :"",
+	},
  	
 })
 
