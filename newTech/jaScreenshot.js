@@ -115,4 +115,13 @@ var vm = new Vue({
 
 
 
+ scope.$watch('name', function(newValue, oldValue) {
+  scope.counter = scope.counter + 1;
+});
+
+
+ vm.$watch('name', function (newVal, oldVal) {
+  vm.counter = vm.counter + 1;
+})
+
  

@@ -1,1 +1,7 @@
 https://vuejs.org/2015/10/28/why-no-template-url/
+
+https://www.airpair.com/angularjs/posts/angularjs-performance-large-applications
+
+https://medium.com/@jeffwhelpley/is-angularjs-fast-enough-98dcf96406c8#.a6iluwr7j
+
+https://medium.com/este-js-framework/whats-wrong-with-angular-js-97b0a787f903#.fp0wkrmhd

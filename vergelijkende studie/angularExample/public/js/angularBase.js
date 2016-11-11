@@ -19,13 +19,12 @@ console.log("angularbase ingeladen");
 		    	vm.cards = {};
 
 		    	this.updateCards = function(){
-		    	console.log("update cards");
+		    	
 			    		$http({
 						url: "/api/cards",
 						method:"GET",
 						}).success(function(data){
 							vm.cards = data;
-
 						});
 
 		    	};
@@ -48,7 +47,7 @@ console.log("angularbase ingeladen");
 		    	vm.card = {};
 
 		    	this.updateCard = function(){
-		    	console.log("update cards");
+		   
 			    		$http({
 						url: "/api/cards/"+ $scope.currentId,
 						method:"GET",

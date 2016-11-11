@@ -1,5 +1,9 @@
 console.log("base is ingeladen");
 
+var vueExample = new Vue({
+	el:"#vueExample",
+
+});	
 
 Vue.component('card', {
 	template : "#cardTemplate",
@@ -50,7 +54,3 @@ Vue.component('card', {
 
 
 
-var vueExample = new Vue({
-	el:"#vueExample",
-
-});	
