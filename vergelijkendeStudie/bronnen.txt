@@ -5,3 +5,5 @@ https://www.airpair.com/angularjs/posts/angularjs-performance-large-applications
 https://medium.com/@jeffwhelpley/is-angularjs-fast-enough-98dcf96406c8#.a6iluwr7j
 
 https://medium.com/este-js-framework/whats-wrong-with-angular-js-97b0a787f903#.fp0wkrmhd
+
+https://www.codeschool.com/courses/shaping-up-with-angular-js
