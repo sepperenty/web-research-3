@@ -24,7 +24,6 @@ var computed = new Vue({
 
 	      get: function()
 	      {
-
 	      return this.factor1 * this.factor2;
 	      },
 
