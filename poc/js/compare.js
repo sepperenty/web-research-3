@@ -37,8 +37,8 @@
 					request.open('POST', 'https://api.kairos.com/enroll');
 
 					request.setRequestHeader('Content-Type', 'application/json');
-					request.setRequestHeader('app_id', 'fadfef96');
-					request.setRequestHeader('app_key', 'e2825031129c5b0ed11121739edc0e00');
+					request.setRequestHeader('app_id', '');
+					request.setRequestHeader('app_key', '');
 
 					request.onreadystatechange = function () {
 					  if (this.readyState === 4) {
@@ -78,8 +78,8 @@
 			request.open('POST', 'https://api.kairos.com/gallery/view');
 
 			request.setRequestHeader('Content-Type', 'application/json');
-			request.setRequestHeader('app_id', 'fadfef96');
-			request.setRequestHeader('app_key', 'e2825031129c5b0ed11121739edc0e00');
+			request.setRequestHeader('app_id', '');
+			request.setRequestHeader('app_key', '');
 
 			request.onreadystatechange = function () {
 			  if (this.readyState === 4) {
@@ -109,8 +109,8 @@
 		request.open('POST', 'https://api.kairos.com/gallery/remove_subject');
 
 		request.setRequestHeader('Content-Type', 'application/json');
-		request.setRequestHeader('app_id', 'fadfef96');
-		request.setRequestHeader('app_key', 'e2825031129c5b0ed11121739edc0e00');
+		request.setRequestHeader('app_id', '');
+		request.setRequestHeader('app_key', '');
 
 		request.onreadystatechange = function () {
 		  if (this.readyState === 4) {
@@ -138,7 +138,7 @@
 
 	$("#recognize").on("click", function(){
 
-		var tocheck = $("#faceToCheck").val();
+		var tocheck = $("#n").val();
 
 		if(tocheck != ""){
 			var request = new XMLHttpRequest();
@@ -146,8 +146,8 @@
 			request.open('POST', 'https://api.kairos.com/recognize');
 
 			request.setRequestHeader('Content-Type', 'application/json');
-			request.setRequestHeader('app_id', 'fadfef96');
-			request.setRequestHeader('app_key', 'e2825031129c5b0ed11121739edc0e00');
+			request.setRequestHeader('app_id', '');
+			request.setRequestHeader('app_key', '');
 
 			request.onreadystatechange = function () {
 			  if (this.readyState === 4) {
