@@ -1,1 +1,11 @@
 http://www.pyimagesearch.com/2014/09/15/python-compare-two-images/
+
+
+#getting matplotlib
+python getPyp.py
+python -m pip install -U pip setuptools
+python -m pip install matplotlib
+
+python ez_setup.py
+easy_install pip
+pip install django
