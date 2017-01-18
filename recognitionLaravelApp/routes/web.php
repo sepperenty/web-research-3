@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', "PublicController@index");
+
+Route::post('/store', 'PublicController@storePicture');
+
+Route::get('/test', 'PublicController@pythonTest');
+
+Route::post('/newName', 'PublicController@newName');
+
+Route::post('/comparePictureOpenCv', 'PublicController@comparePictureOpenCv');
+
+Route::get('/randomCharacters', 'PublicController@randomCharacters');
