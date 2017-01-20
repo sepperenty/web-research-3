@@ -42,15 +42,24 @@
             currentURI = uri;
             //console.log(uri); // uncomment line to log URI for testing
             var token = $('#token').val();
-            $.post( "/store", {dataURI: uri, '_token': token}, function(data){
+
+            /*Image equation manier*/
+
+           /* $.post( "/store", {dataURI: uri, '_token': token}, function(data){
                 console.log(data);
+                $("#resultName").html("Is this " + data[0] +"?");
+                $(".result").css("visibility", "visible");
+            } );*/
+
+            /*Opencv manier*/
+
+             $.post( "/comparePictureOpenCv", {dataURI: uri, '_token': token}, function(data){
+                console.log(data[1]);
                 $("#resultName").html("Is this " + data[0] +"?");
                 $(".result").css("visibility", "visible");
             } );
 
             alreadySaved = false;
-
-
             //imgtag.src = uri; // add URI to IMG tag src
         }
 
@@ -64,6 +73,7 @@
                 var newName = $("#newName").val();
                 if(newName != ""){
                     console.log("send");
+                    /*Image equation manier*/
                     $.post( "/newName", { name: newName, dataURI: currentURI, '_token': token}, function(data){
                         console.log(data);
                     } );
@@ -95,4 +105,4 @@
 
     });
 
-})();
+})();  

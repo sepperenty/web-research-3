@@ -26,7 +26,7 @@ class PublicController extends Controller
         exec($command, $output);
 
         if($output[0] == "success"){
-            unlink('../resources/images/'. $newOriginalName . ".jpg");
+            //unlink('../resources/images/'. $newOriginalName . ".jpg");
             $allCharacters = Character::get();
             $smallest = 200000;
             $values = [];
@@ -56,6 +56,27 @@ class PublicController extends Controller
             //when doesn't work do this to see error
             //exec('python C:\Users\seppe\Documents\virtualHosts\sepperenty\recognitionLaravelApp\app\test.py capt0001 2>&1', $output);
         }
+
+
+
+    }public function comparePictureOpenCv(Request $request){
+        $data = $request->dataURI;
+        list($type, $data) = explode(';', $data);
+        list(, $data)      = explode(',', $data);
+        $data = base64_decode($data);
+        $newOriginalName = rtrim(base64_encode(md5(microtime())), "=");
+        file_put_contents('../resources/images/'.$newOriginalName.'.jpg', $data);
+
+        $command = 'python C:\Users\seppe\Documents\virtualHosts\sepperenty\recognitionLaravelApp\app\opencvRecognition.py '.$newOriginalName . " 2>&1";
+        exec($command, $output);
+        
+        unlink('../resources/images/'. $newOriginalName . ".jpg");
+        
+        return $output;
+       
+        //when doesn't work do this to see error
+        //exec('python C:\Users\seppe\Documents\virtualHosts\sepperenty\recognitionLaravelApp\app\test.py capt0001 2>&1', $output);
+        
 
 
 
@@ -96,5 +117,48 @@ class PublicController extends Controller
 
         exec($command, $output);
         return $output;
+    }
+
+    public function randomCharacters(){
+
+        for ($i = 0; $i<100; $i++){
+            $characters = ["Homer Simpson", "Marge Simpson", "Lisa Simpson", "Bart Simpson"];
+            $random = rand(0,3);
+            $newName = $characters[$random];
+
+            $newImage = "image1";
+
+            if($newName == $characters[0]){
+                $images = ["image1", "MmEwYmIxODc4YjEzODNjM2I4OGQxMzViZDZiZmU3NmQ+", "MzQwOTljZmMzMDIyOWVkNTYwN2M5MDYzMDJhOWMwZjc+", "ZDA1ZDMwMjUyYmRmNmM0ZjExYWVlMTAzNDVjMmRjOGI+"];
+                $imRandom = rand(0,3);
+                $newImage = $images[$imRandom];
+            }elseif($newName == $characters[1]){
+                $images = ["image2", "NDQ2ZDNhZDZmNzc5MGVhNjBhNjgyYjdjMGM5YWYyMjQ+"];
+                $imRandom = rand(0,1);
+                $newImage = $images[$imRandom];
+            }elseif($newName == $characters[2]){
+                $images = ["image3", "M2U4ZmY1MjY5YjI5N2FhNGJkMmYyMTdiYzZiNmYxMzc+", "NDBmOTM5N2NjODMyY2VmOGY4OWJkNzNkN2VhM2NlNmQ+", "Yzk3ZjI4MjI5ZjhkMDRhMjFkYjI3MGNmMDM1OWM5ODU+", "ZWNjMTJmODVlMjAyNWVmNDdlZmI2MWEwZThjZDM0NGQ+"];
+                $imRandom = rand(0,4);
+                $newImage = $images[$imRandom];
+            }elseif($newName == $characters[3]){
+                $images = ["image4", "YmU1ZmUzN2IwZTY5ZDE2NTc5NWNmY2Y4ODM3OWNmMGQ+", "YWI1OTVjM2ZmNDQwZjcyZmIxMDljYjE3MGNkZTQ5Mjc+", "ZDYzYWM2ZTdlY2JhMjc5YWJjMzc0MDJmMWY3ZjRmNmI+"];
+                $imRandom = rand(0,3);
+                $newImage = $images[$imRandom];
+            }
+
+           
+
+            $newCharacter = new Character();
+            $newCharacter->name = $newName;
+            $newCharacter->dataUrl = $newImage;
+            $newCharacter->save();
+           
+        }
+
+        return "success";
+
+
+
+
     }
 }
