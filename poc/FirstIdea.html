@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>resembleTest</title>
+</head>
+
+<style>
+		
+		.container{
+			width: 940px;
+			margin-left: auto;
+			margin-right: auto;
+			border: 1px solid gray;
+			border-radius: 10px;
+			padding: 50px;
+			margin-top: 100px;
+		}
+
+		button{
+			display: block;
+			margin-bottom: 20px;
+			padding: 10px;
+			background-color: none;
+			border: 1px solid black;
+			border-radius: 5px;
+			width: 100px;
+			text-align: center;
+		}
+
+		#nameToDelete, #linkToUplaod, #nameOfLink, #faceToCheck{
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border-style: none;
+			border: 1px solid black;
+		}
+
+</style>
+
+<body>
+
+	<div class="container">
+		<canvas id="headPicture"></canvas>
+
+		<br>
+		
+		<input type="text" id="linkToUplaod" placeholder="Drop link here" value="images/person3.jpg">
+		<button id="checkPicture">checkPicture</button>
+		<button id="woIsIt">Who Is It ?</button>
+
+		<img src="" id="CorrectImage" alt="">
+
+	</div>
+	
+	
+	
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/resemblejs/resemble.js"></script>
+<script src="js/tracking/tracking-min.js"></script>
+<script src="js/tracking/data/face.js"></script>
+<script src="js/compareVersion1.js"></script>
+</html>

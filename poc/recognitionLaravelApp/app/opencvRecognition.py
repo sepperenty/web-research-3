@@ -25,8 +25,8 @@ if result:
 		#template = cv2.imread('../resources/images/' + newImage + '.jpg', 0)
 
 		seekImage = cv2.imread('../resources/images/' + newImage + '.jpg', 0)
-		template = seekImage[40:130, 30:130]
-
+		#template = seekImage[40:130, 0:130]
+		template = seekImage[20:180, 20:130]
 		w, h = template.shape[::-1]
 
 		res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)

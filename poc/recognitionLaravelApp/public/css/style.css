@@ -1,0 +1,177 @@
+
+    @font-face {
+      font-family: "SimpsonFont";
+      src: url("../fonts/Simpsonfont.ttf") format("truetype");
+    }
+
+    #app{
+        margin: 0px auto;
+        width:500px;
+        padding-bottom: 100px;
+    }
+    #container {
+        margin: 0px auto;
+        width: 500px;
+        height: 375px;
+        border: 10px #333 solid;
+    }
+    #videoElement {
+        width: 500px;
+        height: 375px;
+        background-color: #666;
+    }
+    .videoscreen{
+        position: relative;
+        overflow: hidden;
+    }
+    #circle{
+        position: absolute;
+        box-sizing: border-box;
+        width: 150px;
+        height: 200px;
+        background-color: transparent;
+        border: 5px solid #ed3133;
+        /*border-radius: 100%;*/
+        border-radius: 20px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+         
+
+    }
+
+    #leftPupil{
+        background: #ed3133;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 70px;
+        left: 50px;
+        border-radius: 100%;
+        box-shadow: 2px 2px 2px black;
+    }
+
+    #rightPupil{
+        background: #ed3133;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 70px;
+        left: 100px;
+        border-radius: 100%;
+        box-shadow: 2px 2px 2px black;
+    }
+
+    .result{
+        display: none;
+    }
+    .headLogo{
+        width: 100%;
+    }
+    h1{
+        font-family: SimpsonFont;
+        text-align: center;
+        color: #ed3133;
+        text-shadow: 2px 2px black;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 50px;
+    }
+    .explenation{
+        font-family: roboto;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    
+    #pressInstruction{
+        text-align: center;
+        color: #ed3133;
+
+    }
+    .resultBlock{
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .canvasDiv{
+        float: left;
+        width: 35%;
+        margin-top: 20px;
+    }
+    #canvas{
+        border-radius: 20px;
+    }
+    .result{
+        float: left;
+        width: 65%;
+    }
+    .spaceBar{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #spaceBarImg{
+        width: 100px;
+        height: 50px;
+        margin: auto;
+        display: block;
+        background-image: url("/images/spacebar.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        cursor: pointer;
+    }
+    #characterName{
+        font-family: SimpsonFont;
+        color: #ed3133;
+        text-shadow: 2px 2px black;
+        font-size: 30px;
+    }
+
+    #resultName{
+        font-size: 20px;
+        font-weight: bold;
+        font-family: roboto;
+    }
+
+    .formInfo{
+        font-family: roboto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    input{
+        box-sizing: border-box;
+        height: 40px;
+        font-size: 15px;
+        font-family: roboto;
+        padding: 5px;
+        border: 1px solid gray;
+        border-radius: 2px;
+    }
+
+    #newName{
+        width: 70%;
+        /* position: absolute; */
+        left: 0;
+        top: 0;
+    }
+    #sendName{
+        /* position: absolute; */
+        top:0;
+        right: 0;
+        }
+    .feedBack{
+        position: relative;
+        width: 100%;
+        height: 40px;
+        overflow: hidden;
+    }
+    .message{
+        font-family: SimpsonFont;
+        color: #ed3133;
+        text-shadow: 2px 2px black;
+        font-size: 30px;
+        display: none;
+
+    }

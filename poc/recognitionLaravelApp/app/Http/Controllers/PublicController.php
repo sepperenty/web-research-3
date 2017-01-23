@@ -7,11 +7,15 @@ use App\Character;
 
 class PublicController extends Controller
 {
-    public function index(){
-        return view("index");
+    public function recognitionOpenCv(){
+        return view("recognitionOpenCv");
     }
 
-    public function storePicture(Request $request){
+    public function recognitionEquation(){
+        return view("recognitionEquation");
+    }
+
+    public function comparePictureEquation(Request $request){
         $data = $request->dataURI;
 
         list($type, $data) = explode(';', $data);
@@ -129,21 +133,25 @@ class PublicController extends Controller
             $newImage = "image1";
 
             if($newName == $characters[0]){
-                $images = ["image1", "MmEwYmIxODc4YjEzODNjM2I4OGQxMzViZDZiZmU3NmQ+", "MzQwOTljZmMzMDIyOWVkNTYwN2M5MDYzMDJhOWMwZjc+", "ZDA1ZDMwMjUyYmRmNmM0ZjExYWVlMTAzNDVjMmRjOGI+"];
-                $imRandom = rand(0,3);
-                $newImage = $images[$imRandom];
+                /*$images = ["image1", "MmEwYmIxODc4YjEzODNjM2I4OGQxMzViZDZiZmU3NmQ+", "MzQwOTljZmMzMDIyOWVkNTYwN2M5MDYzMDJhOWMwZjc+", "ZDA1ZDMwMjUyYmRmNmM0ZjExYWVlMTAzNDVjMmRjOGI+"];
+                $imRandom = rand(0,3);*/
+                //$newImage = $images[$imRandom];
+                $newImage = "image1";
             }elseif($newName == $characters[1]){
-                $images = ["image2", "NDQ2ZDNhZDZmNzc5MGVhNjBhNjgyYjdjMGM5YWYyMjQ+"];
-                $imRandom = rand(0,1);
-                $newImage = $images[$imRandom];
+                /*$images = ["image2", "NDQ2ZDNhZDZmNzc5MGVhNjBhNjgyYjdjMGM5YWYyMjQ+"];
+                $imRandom = rand(0,1);*/
+                //$newImage = $images[$imRandom];
+                $newImage = "image2";
             }elseif($newName == $characters[2]){
-                $images = ["image3", "M2U4ZmY1MjY5YjI5N2FhNGJkMmYyMTdiYzZiNmYxMzc+", "NDBmOTM5N2NjODMyY2VmOGY4OWJkNzNkN2VhM2NlNmQ+", "Yzk3ZjI4MjI5ZjhkMDRhMjFkYjI3MGNmMDM1OWM5ODU+", "ZWNjMTJmODVlMjAyNWVmNDdlZmI2MWEwZThjZDM0NGQ+"];
-                $imRandom = rand(0,4);
-                $newImage = $images[$imRandom];
+                /*$images = ["image3", "M2U4ZmY1MjY5YjI5N2FhNGJkMmYyMTdiYzZiNmYxMzc+", "NDBmOTM5N2NjODMyY2VmOGY4OWJkNzNkN2VhM2NlNmQ+", "Yzk3ZjI4MjI5ZjhkMDRhMjFkYjI3MGNmMDM1OWM5ODU+", "ZWNjMTJmODVlMjAyNWVmNDdlZmI2MWEwZThjZDM0NGQ+"];
+                $imRandom = rand(0,4);*/
+                //$newImage = $images[$imRandom];
+                $newImage = "image3";
             }elseif($newName == $characters[3]){
-                $images = ["image4", "YmU1ZmUzN2IwZTY5ZDE2NTc5NWNmY2Y4ODM3OWNmMGQ+", "YWI1OTVjM2ZmNDQwZjcyZmIxMDljYjE3MGNkZTQ5Mjc+", "ZDYzYWM2ZTdlY2JhMjc5YWJjMzc0MDJmMWY3ZjRmNmI+"];
-                $imRandom = rand(0,3);
-                $newImage = $images[$imRandom];
+                /*$images = ["image4", "YmU1ZmUzN2IwZTY5ZDE2NTc5NWNmY2Y4ODM3OWNmMGQ+", "YWI1OTVjM2ZmNDQwZjcyZmIxMDljYjE3MGNkZTQ5Mjc+", "ZDYzYWM2ZTdlY2JhMjc5YWJjMzc0MDJmMWY3ZjRmNmI+"];
+                $imRandom = rand(0,3);*/
+                //$newImage = $images[$imRandom];
+                $newImage = "image4";
             }
 
            
@@ -155,7 +163,7 @@ class PublicController extends Controller
            
         }
 
-        return "success";
+        return "resdfs";
 
 
 

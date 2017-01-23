@@ -13,9 +13,11 @@
 
 
 
-Route::get('/', "PublicController@index");
+Route::get('/recognitionOpenCv', "PublicController@recognitionOpenCv");
 
-Route::post('/store', 'PublicController@storePicture');
+Route::get('/recognitionEquation', "PublicController@recognitionEquation");
+
+Route::post('/comparePictureEquation', 'PublicController@comparePictureEquation');
 
 Route::get('/test', 'PublicController@pythonTest');
 

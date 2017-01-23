@@ -86,6 +86,11 @@
 			    console.log('Status:', this.status);
 			    console.log('Headers:', this.getAllResponseHeaders());
 			    console.log('Body:', this.responseText);
+			    var json = JSON.parse(this.responseText);
+			    $(".personages").empty();
+			    for(var person in json.subject_ids){
+			    	$(".personages").append("<li>"+json.subject_ids[person]+"</li>");
+			    }
 			  }
 			};
 
@@ -138,7 +143,7 @@
 
 	$("#recognize").on("click", function(){
 
-		var tocheck = $("#n").val();
+		var tocheck = $("#faceToCheck").val();
 
 		if(tocheck != ""){
 			var request = new XMLHttpRequest();
@@ -154,6 +159,16 @@
 			    console.log('Status:', this.status);
 			    console.log('Headers:', this.getAllResponseHeaders());
 			    console.log('Body:', this.responseText);
+			    var json = JSON.parse(this.responseText);
+			    
+			    
+			    if(json.images != null){
+			    	var name = json.images[0].transaction.subject_id;
+			    	$("#result").html(name);
+			    	console.log(name);
+			    }else{
+			    	$("#result").html("no faces found in the image");
+			    }
 			  }
 			};
 
